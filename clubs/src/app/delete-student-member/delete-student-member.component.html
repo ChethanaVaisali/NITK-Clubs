@@ -1,3 +1,620 @@
-<p>
-  delete-student-member works!
-</p>
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Sufee Admin - HTML5 Admin Template</title>
+  <meta name="description" content="Sufee Admin - HTML5 Admin Template">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="apple-touch-icon" href="apple-icon.png">
+  <link rel="shortcut icon" href="favicon.ico">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/themify-icons@1.0.0/index.min.js">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.css">
+  <!-- <link rel="stylesheet" href="assets/css/bootstrap-select.less"> -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/jqvmap/1.5.1/jquery.vmap.js" rel="stylesheet">
+
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+
+  <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
+
+</head>
+<body>
+
+
+<!-- Left Panel -->
+
+<aside id="left-panel" class="left-panel">
+  <nav class="navbar navbar-expand-sm navbar-default">
+
+    <div class="navbar-header">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fa fa-bars"></i>
+      </button>
+      <a class="navbar-brand" href="./"><img src="assets/images/logo1.png" alt="Logo"></a>
+      <a class="navbar-brand hidden" href="./"><img src="assets/images/logo2.png" alt="Logo"></a>
+    </div>
+
+    <div id="main-menu" class="main-menu collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li class="active">
+          <a> <i class="menu-icon fa fa-dashboard"></i>NITK Clubs </a>
+        </li>
+        <h3 class="menu-title">About</h3><!-- /.menu-title -->
+        <li >
+          <a [routerLink]="['/addDependents']" class="dropdown-toggle">
+            <i class="menu-icon fa fa-laptop"></i>Profile</a>
+        </li>
+        <li >
+          <button (click)="Logout()" class="dropdown-toggle"  aria-haspopup="true" aria-expanded="false">
+            <i class="menu-icon fa fa-laptop"></i>Logout</button>
+        </li>
+
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </nav>
+</aside><!-- /#left-panel -->
+
+<!-- Left Panel -->
+
+<!-- Right Panel -->
+
+<div id="right-panel" class="right-panel">
+
+  <!-- Header-->
+  <header id="header" class="header">
+
+    <div class="header-menu">
+
+      <div class="col-sm-7">
+        <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
+        <div class="header-left">
+          <button class="search-trigger"><i class="fa fa-search"></i></button>
+          <div class="form-inline">
+            <form class="search-form">
+              <input class="form-control mr-sm-2" type="text" placeholder="Search ..." aria-label="Search">
+              <button class="search-close" type="submit"><i class="fa fa-close"></i></button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="col-sm-5">
+        <div class="user-area dropdown float-right">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img class="user-avatar rounded-circle" src="assets/images/admin.jpg" alt="User Avatar">
+          </a>
+
+          <div class="user-menu dropdown-menu">
+            <a class="nav-link" href="#"><i class="fa fa- user"></i>My Profile</a>
+
+            <a class="nav-link" href="#"><i class="fa fa- user"></i>Notifications <span class="count">13</span></a>
+
+            <a class="nav-link" href="#"><i class="fa fa -cog"></i>Settings</a>
+
+            <a class="nav-link" href="#"><i class="fa fa-power -off"></i>Logout</a>
+          </div>
+        </div>
+
+        <div class="language-select dropdown" id="language-select">
+          <a class="dropdown-toggle" href="#" data-toggle="dropdown"  id="language" aria-haspopup="true" aria-expanded="true">
+            <i class="flag-icon flag-icon-in"></i>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="language" >
+            <div class="dropdown-item">
+              <span class="flag-icon flag-icon-fr"></span>
+            </div>
+            <div class="dropdown-item">
+              <i class="flag-icon flag-icon-es"></i>
+            </div>
+            <div class="dropdown-item">
+              <i class="flag-icon flag-icon-us"></i>
+            </div>
+            <div class="dropdown-item">
+              <i class="flag-icon flag-icon-it"></i>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </header><!-- /header -->
+  <!-- Header-->
+
+  <div class="breadcrumbs">
+    <div class="col-sm-4">
+      <div class="page-header float-left">
+        <div class="page-title">
+          <h1>Dashboard</h1>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <div class="page-header float-right">
+        <div class="page-title">
+          <ol class="breadcrumb text-right">
+            <li class="active">Dashboard</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="fill">
+    <h1 style="position:absolute;top:25%;left:50%;">Student Members</h1>
+    <table class="delete" style="margin-left: 20%;margin-top:5%;">
+      <tr *ngFor="let st of stmembers">
+        <td style="font-size:20px;padding-right:280px;padding-left:100px;">{{st.name}}</td><td><input type="button" (click)="DeleteStudent(st.student_id)" value="Delete" class="btn1 blue"></td>
+      </tr>
+    </table>
+
+  </div>
+
+</div><!-- /#right-panel -->
+
+<!-- Right Panel -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/core.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqvmap/1.5.1/jquery.vmap.min.js"></script>
+<script>
+  $.noConflict();
+
+  jQuery(document).ready(function($) {
+
+    "use strict";
+
+    [].slice.call( document.querySelectorAll( 'select.cs-select' ) ).forEach( function(el) {
+      new SelectFx(el);
+    } );
+
+    jQuery('.selectpicker').selectpicker;
+
+
+    $('#menuToggle').on('click', function(event) {
+      $('body').toggleClass('open');
+    });
+
+    $('.search-trigger').on('click', function(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      $('.search-trigger').parent('.header-left').addClass('open');
+    });
+
+    $('.search-close').on('click', function(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      $('.search-trigger').parent('.header-left').removeClass('open');
+    });
+
+    // $('.user-area> a').on('click', function(event) {
+    //  event.preventDefault();
+    //  event.stopPropagation();
+    //  $('.user-menu').parent().removeClass('open');
+    //  $('.user-menu').parent().toggleClass('open');
+    // });
+
+
+  });
+  ( function ( $ ) {
+    "use strict";
+
+    jQuery( '#vmap' ).vectorMap( {
+      map: 'world_en',
+      backgroundColor: null,
+      color: '#ffffff',
+      hoverOpacity: 0.7,
+      selectedColor: '#1de9b6',
+      enableZoom: true,
+      showTooltip: true,
+      values: sample_data,
+      scaleColors: [ '#1de9b6', '#03a9f5' ],
+      normalizeFunction: 'polynomial'
+    } );
+  } )( jQuery );
+
+  ( function ( $ ) {
+    "use strict";
+
+
+// const brandPrimary = '#20a8d8'
+    const brandSuccess = '#4dbd74'
+    const brandInfo = '#63c2de'
+    const brandDanger = '#f86c6b'
+
+    function convertHex (hex, opacity) {
+      hex = hex.replace('#', '')
+      const r = parseInt(hex.substring(0, 2), 16)
+      const g = parseInt(hex.substring(2, 4), 16)
+      const b = parseInt(hex.substring(4, 6), 16)
+
+      const result = 'rgba(' + r + ',' + g + ',' + b + ',' + opacity / 100 + ')'
+      return result
+    }
+
+    function random (min, max) {
+      return Math.floor(Math.random() * (max - min + 1) + min)
+    }
+
+    var elements = 27
+    var data1 = []
+    var data2 = []
+    var data3 = []
+
+    for (var i = 0; i <= elements; i++) {
+      data1.push(random(50, 200))
+      data2.push(random(80, 100))
+      data3.push(65)
+    }
+
+
+    //Traffic Chart
+    var ctx = document.getElementById( "trafficChart" );
+    //ctx.height = 200;
+    var myChart = new Chart( ctx, {
+      type: 'line',
+      data: {
+        labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S', 'M', 'T', 'W', 'T', 'F', 'S', 'S', 'M', 'T', 'W', 'T', 'F', 'S', 'S', 'M', 'T', 'W', 'T', 'F', 'S', 'S'],
+        datasets: [
+          {
+            label: 'My First dataset',
+            backgroundColor: convertHex(brandInfo, 10),
+            borderColor: brandInfo,
+            pointHoverBackgroundColor: '#fff',
+            borderWidth: 2,
+            data: data1
+          },
+          {
+            label: 'My Second dataset',
+            backgroundColor: 'transparent',
+            borderColor: brandSuccess,
+            pointHoverBackgroundColor: '#fff',
+            borderWidth: 2,
+            data: data2
+          },
+          {
+            label: 'My Third dataset',
+            backgroundColor: 'transparent',
+            borderColor: brandDanger,
+            pointHoverBackgroundColor: '#fff',
+            borderWidth: 1,
+            borderDash: [8, 5],
+            data: data3
+          }
+        ]
+      },
+      options: {
+        //   maintainAspectRatio: true,
+        //   legend: {
+        //     display: false
+        // },
+        // scales: {
+        //     xAxes: [{
+        //       display: false,
+        //       categoryPercentage: 1,
+        //       barPercentage: 0.5
+        //     }],
+        //     yAxes: [ {
+        //         display: false
+        //     } ]
+        // }
+
+
+        maintainAspectRatio: true,
+        legend: {
+          display: false
+        },
+        responsive: true,
+        scales: {
+          xAxes: [{
+            gridLines: {
+              drawOnChartArea: false
+            }
+          }],
+          yAxes: [ {
+            ticks: {
+              beginAtZero: true,
+              maxTicksLimit: 5,
+              stepSize: Math.ceil(250 / 5),
+              max: 250
+            },
+            gridLines: {
+              display: true
+            }
+          } ]
+        },
+        elements: {
+          point: {
+            radius: 0,
+            hitRadius: 10,
+            hoverRadius: 4,
+            hoverBorderWidth: 3
+          }
+        }
+
+
+      }
+    } );
+
+
+  } )( jQuery );
+
+  ( function ( $ ) {
+    "use strict";
+
+
+    // Counter Number
+    $('.count').each(function () {
+      $(this).prop('Counter',0).animate({
+        Counter: $(this).text()
+      }, {
+        duration: 3000,
+        easing: 'swing',
+        step: function (now) {
+          $(this).text(Math.ceil(now));
+        }
+      });
+    });
+
+
+
+
+
+    //WidgetChart 1
+    var ctx = document.getElementById( "widgetChart1" );
+    ctx.height = 150;
+    var myChart = new Chart( ctx, {
+      type: 'line',
+      data: {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        type: 'line',
+        datasets: [ {
+          data: [65, 59, 84, 84, 51, 55, 40],
+          label: 'Dataset',
+          backgroundColor: 'transparent',
+          borderColor: 'rgba(255,255,255,.55)',
+        }, ]
+      },
+      options: {
+
+        maintainAspectRatio: false,
+        legend: {
+          display: false
+        },
+        responsive: true,
+        tooltips: {
+          mode: 'index',
+          titleFontSize: 12,
+          titleFontColor: '#000',
+          bodyFontColor: '#000',
+          backgroundColor: '#fff',
+          titleFontFamily: 'Montserrat',
+          bodyFontFamily: 'Montserrat',
+          cornerRadius: 3,
+          intersect: false,
+        },
+        scales: {
+          xAxes: [ {
+            gridLines: {
+              color: 'transparent',
+              zeroLineColor: 'transparent'
+            },
+            ticks: {
+              fontSize: 2,
+              fontColor: 'transparent'
+            }
+          } ],
+          yAxes: [ {
+            display:false,
+            ticks: {
+              display: false,
+            }
+          } ]
+        },
+        title: {
+          display: false,
+        },
+        elements: {
+          line: {
+            borderWidth: 1
+          },
+          point: {
+            radius: 4,
+            hitRadius: 10,
+            hoverRadius: 4
+          }
+        }
+      }
+    } );
+
+
+    //WidgetChart 2
+    var ctx = document.getElementById( "widgetChart2" );
+    ctx.height = 150;
+    var myChart = new Chart( ctx, {
+      type: 'line',
+      data: {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        type: 'line',
+        datasets: [ {
+          data: [1, 18, 9, 17, 34, 22, 11],
+          label: 'Dataset',
+          backgroundColor: '#63c2de',
+          borderColor: 'rgba(255,255,255,.55)',
+        }, ]
+      },
+      options: {
+
+        maintainAspectRatio: false,
+        legend: {
+          display: false
+        },
+        responsive: true,
+        tooltips: {
+          mode: 'index',
+          titleFontSize: 12,
+          titleFontColor: '#000',
+          bodyFontColor: '#000',
+          backgroundColor: '#fff',
+          titleFontFamily: 'Montserrat',
+          bodyFontFamily: 'Montserrat',
+          cornerRadius: 3,
+          intersect: false,
+        },
+        scales: {
+          xAxes: [ {
+            gridLines: {
+              color: 'transparent',
+              zeroLineColor: 'transparent'
+            },
+            ticks: {
+              fontSize: 2,
+              fontColor: 'transparent'
+            }
+          } ],
+          yAxes: [ {
+            display:false,
+            ticks: {
+              display: false,
+            }
+          } ]
+        },
+        title: {
+          display: false,
+        },
+        elements: {
+          line: {
+            tension: 0.00001,
+            borderWidth: 1
+          },
+          point: {
+            radius: 4,
+            hitRadius: 10,
+            hoverRadius: 4
+          }
+        }
+      }
+    } );
+
+
+
+    //WidgetChart 3
+    var ctx = document.getElementById( "widgetChart3" );
+    ctx.height = 70;
+    var myChart = new Chart( ctx, {
+      type: 'line',
+      data: {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        type: 'line',
+        datasets: [ {
+          data: [78, 81, 80, 45, 34, 12, 40],
+          label: 'Dataset',
+          backgroundColor: 'rgba(255,255,255,.2)',
+          borderColor: 'rgba(255,255,255,.55)',
+        }, ]
+      },
+      options: {
+
+        maintainAspectRatio: true,
+        legend: {
+          display: false
+        },
+        responsive: true,
+        // tooltips: {
+        //     mode: 'index',
+        //     titleFontSize: 12,
+        //     titleFontColor: '#000',
+        //     bodyFontColor: '#000',
+        //     backgroundColor: '#fff',
+        //     titleFontFamily: 'Montserrat',
+        //     bodyFontFamily: 'Montserrat',
+        //     cornerRadius: 3,
+        //     intersect: false,
+        // },
+        scales: {
+          xAxes: [ {
+            gridLines: {
+              color: 'transparent',
+              zeroLineColor: 'transparent'
+            },
+            ticks: {
+              fontSize: 2,
+              fontColor: 'transparent'
+            }
+          } ],
+          yAxes: [ {
+            display:false,
+            ticks: {
+              display: false,
+            }
+          } ]
+        },
+        title: {
+          display: false,
+        },
+        elements: {
+          line: {
+            borderWidth: 2
+          },
+          point: {
+            radius: 0,
+            hitRadius: 10,
+            hoverRadius: 4
+          }
+        }
+      }
+    } );
+
+
+    //WidgetChart 4
+    var ctx = document.getElementById( "widgetChart4" );
+    ctx.height = 70;
+    var myChart = new Chart( ctx, {
+      type: 'bar',
+      data: {
+        labels: ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''],
+        datasets: [
+          {
+            label: "My First dataset",
+            data: [78, 81, 80, 45, 34, 12, 40, 75, 34, 89, 32, 68, 54, 72, 18, 98],
+            borderColor: "rgba(0, 123, 255, 0.9)",
+            //borderWidth: "0",
+            backgroundColor: "rgba(255,255,255,.3)"
+          }
+        ]
+      },
+      options: {
+        maintainAspectRatio: true,
+        legend: {
+          display: false
+        },
+        scales: {
+          xAxes: [{
+            display: false,
+            categoryPercentage: 1,
+            barPercentage: 0.5
+          }],
+          yAxes: [ {
+            display: false
+          } ]
+        }
+      }
+    } );
+
+
+
+  } )( jQuery );
+</script>
+
+</body>
+</html>

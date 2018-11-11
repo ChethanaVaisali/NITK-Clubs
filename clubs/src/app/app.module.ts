@@ -13,6 +13,8 @@ import { DeletePostComponent } from './delete-post/delete-post.component';
 import { AddStudentMemberComponent } from './add-student-member/add-student-member.component';
 import { DeleteStudentMemberComponent } from './delete-student-member/delete-student-member.component';
 import { ProfileComponent } from './profile/profile.component';
+import {FlashMessagesModule, FlashMessagesService} from 'angular2-flash-messages';
+import { AdminprofileComponent } from './adminprofile/adminprofile.component';
 
 @NgModule({
   declarations: [
@@ -24,15 +26,17 @@ import { ProfileComponent } from './profile/profile.component';
     DeletePostComponent,
     AddStudentMemberComponent,
     DeleteStudentMemberComponent,
-    ProfileComponent
+    ProfileComponent,
+    AdminprofileComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    FlashMessagesModule,
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [CookieService],
+  providers: [CookieService,FlashMessagesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

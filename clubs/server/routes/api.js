@@ -135,8 +135,8 @@ router.post('/addPost',function(req,res){
   var name=req.body.name;
   var tags=req.body.tags;
   var likes=0;
-  var sql="INSERT INTO event(edate, name, tags,likes) values ?";
-  var values=[[edate,name,tags,likes]];
+  var sql="INSERT INTO event(club_id,edate, name, tags,likes) values ?";
+  var values=[[club_id,edate,name,tags,likes]];
   connection.query(sql,[values],(err,result,fields)=>{
     if(err){
       res.json({success:false, err:err});
@@ -149,5 +149,77 @@ router.post('/addPost',function(req,res){
 
 router.delete('/deletePost/:id',function(req,res){
   var event_id=req.params.id;
-})
+  connection.query("DELETE FROM event where event_id=?",[event_id],function(err,result,fields){
+    if(err){
+      res.json({success:false,err:err});
+    }
+    else{
+      res.json({success:true,result:result});
+    }
+  })
+});
+
+router.post('/addStudentMember',function(req,res){
+  var name =req.body.name;
+  var club_id=req.body.club_id;
+
+  connection.query("SELECT student_id FROM student where name=? LIMIT 1",[name],function(err,result1,fields){
+    if(err){
+      res.json({success:false, err:err});
+    }
+    else{
+      console.log(result1[0].student_id);
+      var sql="INSERT INTO stclub VALUES ?";
+      var values=[[result1[0].student_id,club_id]];
+      connection.query(sql,[values],function (err,result,fields){
+        if(err){
+          res.json({success:false,err:err});
+        }
+        else{
+          res.json({success:true, result:result});
+        }
+      });
+    }
+  });
+
+
+});
+
+router.get('/getStudentMembers/:id',function(req,res){
+  var club_id=req.params.id;
+  connection.query("SELECT * FROM stclub join student on stclub.student_id=student.student_id where club_id = ?",[club_id],function(err,result,fields){
+    if(err){
+      res.json({success:false, err:err});
+    }
+    else{
+      res.json({success:true,result:result});
+    }
+  });
+});
+
+router.post('/deleteStudentMember',function(req,res){
+  var student_id=req.body.student_id;
+  var club_id=req.body.club_id;
+  connection.query("DELETE FROM stclub where student_id = ? AND club_id=?",[student_id,club_id],function(err,result,fields){
+    if(err){
+      res.json({success:false, err:err});
+    }
+    else{
+      res.json({success:true,result:result});
+    }
+  });
+});
+
+router.get('/getClub/:id',function(req,res){
+  var student_id=req.params.id;
+  connection.query("SELECT name FROM stclub join club on stclub.club_id=club.club_id where stclub.student_id = ?",[student_id],function(err,result,fields){
+    if(err){
+      res.json({success:false, err:err});
+    }
+    else{
+      res.json({success:true,result:result});
+    }
+  });
+});
+
 module.exports = router;

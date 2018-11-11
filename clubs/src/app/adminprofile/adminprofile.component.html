@@ -47,10 +47,16 @@
         <li class="active">
           <a> <i class="menu-icon fa fa-dashboard"></i>NITK Clubs</a>
         </li>
-        <h3 class="menu-title">About</h3><!-- /.menu-title -->
+        <h3 class="menu-title">Various Clubs</h3>
+        <!-- /.menu-title -->
         <li >
-          <a [routerLink]="['/addDependents']" class="dropdown-toggle">
+          <a  [routerLink]="['/profile']" class="dropdown-toggle">
             <i class="menu-icon fa fa-laptop"></i>Profile</a>
+        </li>
+
+        <li >
+          <a (click)="Change()" class="dropdown-toggle">
+            <i class="menu-icon fa fa-laptop"></i>Go back</a>
         </li>
         <li >
           <button (click)="Logout()" class="dropdown-toggle"  aria-haspopup="true" aria-expanded="false">
@@ -148,15 +154,15 @@
       </div>
     </div>
   </div>
-  <div class="fill">
-    <h1 style="position:absolute;top:25%;left:50%;">List of Posts</h1>
-    <table class="delete" style="margin-left: 20%;margin-top:5%;">
-      <tr *ngFor="let evt of events">
-        <td style="font-size:20px;padding-right:200px;">{{evt.name}}</td><td style="font-size: 20px; padding-right:200px;">{{evt.tags}} </td> <td><input type="button" (click)="DeletePost(evt.event_id)" value="Delete" class="btn1 blue"></td>
-      </tr>
-    </table>
 
+  <div style="position:absolute; left:45%; top:35%;">
+    <span style="font-size: 1.6em;"><b>Student ID: </b> {{o.row[0].student_id}}</span><br/>
+    <span style="font-size: 1.6em;"><b>Name: </b> {{o.row[0].name}}</span><br/>
+    <span style="font-size: 1.6em;"><b>Branch:</b> {{o.row[0].branch}}</span><br/>
+    <span style="font-size: 1.6em;"><b>Contact no.: </b> {{o.row[0].contact_no}}</span><br/><br/>
+    <span style="font-size: 1.6em;" *ngFor="let club of clubs"><b>Member of: </b>{{club.name}}<br></span>
   </div>
+
 
 </div><!-- /#right-panel -->
 

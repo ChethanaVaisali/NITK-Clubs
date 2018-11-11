@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {CookieService} from 'angular2-cookie/services/cookies.service';
 import {ClubService} from '../club.service';
 import {Event} from '../event';
+import {Router} from '@angular/router';
+import {FlashMessagesService} from 'angular2-flash-messages';
 
 @Component({
   selector: 'app-club',
@@ -16,7 +18,9 @@ export class ClubComponent implements OnInit {
   events: Event[];
 
   constructor(private ws: ClubService,
-              private cs : CookieService) { }
+              private cs : CookieService,
+              private router: Router,
+              private flashMessage:FlashMessagesService) { }
   Data(){
     this.events=[];
     this.ws.getEvents(this.club).subscribe((data:any)=>{
@@ -60,22 +64,32 @@ export class ClubComponent implements OnInit {
 
     this.o=this.cs.getObject('Session');
     console.log(this.o);
-    const object={
-      event_id:event_id,
-      student_name:this.o.row[0].name,
-      comment:this.comment
-    };
-    console.log(object);
-    this.ws.postThread(object).subscribe((res:any)=>{
-      console.log(res);
-      if(res.success)
-      {
-        this.Data();
-      }
-      else {
-        console.log("Something wrong occured");
-      }
-    })
+    if(this.comment==undefined){
+      this.flashMessage.show('Please fill the comment',{cssClass: 'alert-danger', timeout : 10000 });
+    }
+    else {
+      const object = {
+        event_id: event_id,
+        student_name: this.o.row[0].name,
+        comment: this.comment
+      };
+      console.log(object);
+      this.ws.postThread(object).subscribe((res: any) => {
+        console.log(res);
+        if (res.success) {
+          this.Data();
+        }
+        else {
+          console.log("Something wrong occured");
+        }
+      });
+      this.comment=undefined;
+    }
+  }
+
+  Logout(){
+    this.cs.removeAll();
+    this.router.navigate(['/home']);
   }
 
 }
