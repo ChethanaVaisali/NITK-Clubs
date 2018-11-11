@@ -168,9 +168,11 @@
   <section *ngFor="let evt of events" class="events">
     <h3><b>{{evt.name}}</b></h3> <br/>{{evt.pic}}
     <h5>{{evt.desc}}</h5>
+
     <img src="assets/images/{{evt.name}}.jpg" style="height:350px;width:400px;">
     <span style="position:relative;left: 270px;">{{evt.likes}} likes</span> <img src="assets/images/like.jpg" (click)="UpdateLikes(evt.event_id)" style="position:relative;height:10%;width:10%;border-radius:50px;left:55%;"/>
-    <h6 >Comments</h6>
+
+<h6 >Comments</h6>
     <section *ngFor="let th of evt.threads" class="threads">
       <span><b>{{th.student_name}}</b> - {{th.comment}}</span>
     </section>
