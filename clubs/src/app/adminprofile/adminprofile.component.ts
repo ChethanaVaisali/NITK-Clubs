@@ -4,11 +4,11 @@ import { Router } from '@angular/router';
 import {CookieService} from 'angular2-cookie/services/cookies.service';
 
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  selector: 'app-adminprofile',
+  templateUrl: './adminprofile.component.html',
+  styleUrls: ['./adminprofile.component.css']
 })
-export class ProfileComponent implements OnInit {
+export class AdminprofileComponent implements OnInit {
   o:any;
   clubs: any;
   constructor(private _clubService: ClubService,
@@ -22,8 +22,8 @@ export class ProfileComponent implements OnInit {
     console.log(this.clubs);
   }
 
-  Change(selected){
-  this.router.navigate(['/club']);
+  Change(){
+    this.router.navigate(['/admin']);
   }
 
   Logout(){

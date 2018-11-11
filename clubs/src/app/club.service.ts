@@ -82,4 +82,11 @@ export class ClubService {
     }));
 
   }
+
+  getClubs(id){
+    return this.http.get('http://localhost:3000/api/getClub/'+ id).pipe(map((res:any)=>{
+      console.log(res.result);
+      return res.result;
+    }))
+  }
 }

@@ -50,7 +50,7 @@
         <h3 class="menu-title">Various Clubs</h3>
         <!-- /.menu-title -->
         <li >
-          <a  class="dropdown-toggle">
+          <a  [routerLink]="['/profile']" class="dropdown-toggle">
             <i class="menu-icon fa fa-laptop"></i>Profile</a>
         </li>
         <li >
@@ -123,7 +123,7 @@
 
         <div class="language-select dropdown" id="language-select">
           <a class="dropdown-toggle" href="#" data-toggle="dropdown"  id="language" aria-haspopup="true" aria-expanded="true">
-            <i class="flag-icon flag-icon-us"></i>
+            <i class="flag-icon flag-icon-in"></i>
           </a>
           <div class="dropdown-menu" aria-labelledby="language" >
             <div class="dropdown-item">
@@ -168,7 +168,8 @@
   <section *ngFor="let evt of events" class="events">
     <h3><b>{{evt.name}}</b></h3> <br/>{{evt.pic}}
     <h5>{{evt.desc}}</h5>
-    <span style="position:relative;left: 470px;">{{evt.likes}} likes</span> <img src="assets/images/like.jpg" (click)="UpdateLikes(evt.event_id)" style="position:relative;height:10%;width:10%;border-radius:50px;left:90%;"/>
+    <img src="assets/images/{{evt.name}}.jpg" style="height:350px;width:400px;">
+    <span style="position:relative;left: 270px;">{{evt.likes}} likes</span> <img src="assets/images/like.jpg" (click)="UpdateLikes(evt.event_id)" style="position:relative;height:10%;width:10%;border-radius:50px;left:55%;"/>
     <h6 >Comments</h6>
     <section *ngFor="let th of evt.threads" class="threads">
       <span><b>{{th.student_name}}</b> - {{th.comment}}</span>

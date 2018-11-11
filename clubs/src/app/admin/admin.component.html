@@ -45,11 +45,11 @@
     <div id="main-menu" class="main-menu collapse navbar-collapse">
       <ul class="nav navbar-nav">
         <li class="active">
-          <a> <i class="menu-icon fa fa-dashboard"></i>Sanctuary</a>
+          <a> <i class="menu-icon fa fa-dashboard"></i>NITK Clubs</a>
         </li>
         <h3 class="menu-title">About</h3><!-- /.menu-title -->
         <li >
-          <a [routerLink]="['/profile']" class="dropdown-toggle">
+          <a [routerLink]="['/adminprofile']" class="dropdown-toggle">
             <i class="menu-icon fa fa-laptop"></i>Profile</a>
         </li>
         <li >
@@ -106,7 +106,7 @@
 
         <div class="language-select dropdown" id="language-select">
           <a class="dropdown-toggle" href="#" data-toggle="dropdown"  id="language" aria-haspopup="true" aria-expanded="true">
-            <i class="flag-icon flag-icon-us"></i>
+            <i class="flag-icon flag-icon-in"></i>
           </a>
           <div class="dropdown-menu" aria-labelledby="language" >
             <div class="dropdown-item">
@@ -149,8 +149,9 @@
     </div>
   </div>
   <div class="admin">
-    <a [routerLink]="['/addPost']" class="btn blue" style="position:absolute; top : 25%; left: 30%; right : 18%; "> Add a post</a>
-    <a [routerLink]="['/deletePost']" class="btn blue" style="position:absolute; top : 42%; left: 30%; right : 18%; "> Delete a post</a>
+    <h2 style="position:absolute;left:53%;">{{title}}</h2>
+    <a [routerLink]="['/addPost']" class="btn blue" style="position:absolute; top : 30%; left: 30%; right : 18%; "> Add a post</a>
+    <a [routerLink]="['/deletePost']" class="btn blue" style="position:absolute; top : 45%; left: 30%; right : 18%; "> Delete a post</a>
     <a [routerLink]="['/addStudentMember']" class="btn blue" style="position:absolute; top : 62%; left: 30%; right : 18%; "> Add a student member</a>
     <a [routerLink]="['/deleteStudentMember']" class="btn blue" style="position:absolute; top : 80%; left: 30%; right : 18%; "> Delete a student member</a>
   </div>
